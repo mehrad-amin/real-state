@@ -8,7 +8,10 @@ function AdminCard({ data: { _id, title, description, location, price } }) {
   const router = useRouter();
 
   const publishHandler = async () => {
-    const res = await fetch(`/api/profile/publish/${_id}`, { method: "PATCH" });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/profile/publish/${_id}`,
+      { method: "PATCH" }
+    );
     const result = await res.json();
     if (result.message) {
       toast.success(result.message);
